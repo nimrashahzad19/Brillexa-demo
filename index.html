@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brillexa Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="Brillexa-logo.png" alt="Brillexa Logo" class="custom-image" />
+    <h1>Brillexa</h1>
+    <p class="tagline">(Learning that gets you)</p>
+    <p class="description">
+      <strong>Brillexa</strong> is a smart, AI-powered educational tool designed to personalize learning for students.
+      It adapts to individual learning styles and provides powerful features that help users study more effectively,
+      retain information longer, and learn faster.
+      <br /><br />
+      Built for modern learners, Brillexa offers a smarter way to manage study time, generate meaningful content,
+      and track learning progress — all in one place.
+    </p>
+    <button id="toggle-dark-mode">🌙 Toggle Dark Mode</button>
+  </header>
+
+  <!-- Learning Style Form -->
+  <section class="survey-section">
+    <h2>🎯 Personalize Your Brillexa Experience</h2>
+    <form id="survey-form">
+      <div class="survey-group">
+        <label>1. How do you prefer to learn?</label><br />
+        <label><input type="checkbox" name="learningMethod" value="videos" /> Watching videos</label><br />
+        <label><input type="checkbox" name="learningMethod" value="notes" /> Reading notes</label><br />
+        <label><input type="checkbox" name="learningMethod" value="quizzes" /> Taking quizzes</label><br />
+        <label><input type="checkbox" name="learningMethod" value="flashcards" /> Practicing with flashcards</label><br />
+        <label><input type="checkbox" name="learningMethod" value="projects" /> Hands-on projects</label>
+      </div>
+
+      <div class="survey-group">
+        <label>2. How long can you focus in one session?</label><br />
+        <select name="sessionLength">
+          <option value="">Select</option>
+          <option>15 minutes</option>
+          <option>30 minutes</option>
+          <option>1 hour</option>
+          <option>More than 1 hour</option>
+        </select>
+      </div>
+
+      <div class="survey-group">
+        <label>3. When do you usually study best?</label><br />
+        <label><input type="radio" name="studyTime" value="morning" /> Morning</label><br />
+        <label><input type="radio" name="studyTime" value="afternoon" /> Afternoon</label><br />
+        <label><input type="radio" name="studyTime" value="evening" /> Evening</label><br />
+        <label><input type="radio" name="studyTime" value="late night" /> Late Night</label>
+      </div>
+
+      <div class="survey-group">
+        <label>4. What's your current learning goal?</label><br />
+        <input type="text" name="goal" placeholder="e.g. Master HTML basics" />
+      </div>
+
+      <div class="survey-group">
+        <label>5. How do you want Brillexa to help you improve?</label><br />
+        <label><input type="checkbox" name="feedbackType" value="instant" /> Instant quiz feedback</label><br />
+        <label><input type="checkbox" name="feedbackType" value="weekly" /> Weekly progress report</label><br />
+        <label><input type="checkbox" name="feedbackType" value="tips" /> Smart tips after each lesson</label><br />
+        <label><input type="checkbox" name="feedbackType" value="motivation" /> Motivational reminders</label>
+      </div>
+
+      <button type="button" onclick="submitSurvey()">Submit Preferences</button>
+      <p id="survey-output"></p>
+    </form>
+  </section>
+<div class="demo-search">
+  <input
+    type="text"
+    id="ai-search"
+    placeholder="Ask anything about your learning..."
+  />
+  <button onclick="handleAISearch()">Ask</button>
+  <p id="ai-search-response"></p>
+</div>
+
+  <main>
+    <div class="menu">
+      <button onclick="showSection('quiz')">🧩 Build Your Own Quiz</button>
+      <button onclick="showSection('notes')">📝 Smart Notes Generator</button>
+      <button onclick="showSection('progress')">📊 Progress Heatmap</button>
+      <button onclick="showSection('reminder')">🔁 Spaced Repetition</button>
+    </div>
+
+    <section id="quiz" class="hidden">
+      <h2>🧩 Build Your Own Quiz</h2>
+      <label>Topic: <input id="quiz-topic" placeholder="e.g. HTML" /></label><br />
+      <label>Number of Questions: <input type="number" id="quiz-num" min="1" max="10" /></label><br />
+      <button onclick="generateQuiz()">Generate Quiz</button>
+      <div id="quiz-output"></div>
+    </section>
+
+    <section id="notes" class="hidden">
+      <h2>📝 Smart Notes Generator</h2>
+      <textarea id="notes-input" placeholder="Paste your lesson text here..."></textarea>
+      <button onclick="generateNotes()">Generate Smart Notes</button>
+      <div id="notes-output"></div>
+    </section>
+
+    <section id="progress" class="hidden">
+      <h2>📊 Progress Heatmap</h2>
+      <div id="heatmap">[Simulated Heatmap Display]</div>
+      <div class="progress-details">
+        <h3>📚 Lesson Progress</h3>
+        <p id="lesson-progress">Lessons completed: 0</p>
+        <h3>🧪 Quiz Attempts</h3>
+        <p id="quiz-attempts">Total quizzes attempted: 0</p>
+        <h3>⏱️ Study Hours</h3>
+        <p id="study-hours">Hours studied this week: 0</p>
+      </div>
+    </section>
+
+    <section id="reminder" class="hidden">
+      <h2>🔁 Spaced Repetition Reminder</h2>
+      <label>Lesson Name: <input id="lesson-name" /></label>
+      <button onclick="addReminder()">Set Reminders</button>
+      <ul id="reminder-list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
